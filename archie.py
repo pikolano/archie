@@ -22,10 +22,10 @@ class KomaruMod(loader.Module):
     }
 
     strings_ru = {
-        "choosing": "<emoji document_id=5328311576736833844>🔴</emoji> Подбираем {}...",
-        "gif": "ваш гиф",
-        "video": "ваше видео",
-        "photo": "вашу картинку(пикчу)",
+        "choosing": "<emoji document_id=5328311576736833844>🔴</emoji> Отправка {}...",
+        "gif": "GIF",
+        "video": "видео",
+        "photo": "фото",
     }
 
     SEARCH_TYPES = {
@@ -36,7 +36,9 @@ class KomaruMod(loader.Module):
 
     @loader.command(ru_doc="- подобрать рандом картинку(пикчу)/видео/гиф")
     async def archie(self, message: Message):
-        """- рандомная гифка/картинка/видео вместе с Арчи"""
+        """- подбирает рандомную пикчу/гиф/видео с Арчи
+        
+        @orchetv"""
         search_type = choice(
             [
                 InputMessagesFilterGif,
@@ -68,6 +70,6 @@ class KomaruMod(loader.Module):
         return await utils.answer_file(
             msg,
             chosed_msg,
-            chosed_msg.text or "<b>Подобрал " + search_type_str + ".</b>",
+            chosed_msg.text or "<b>Подобрал для тебя " + search_type_str + "!</b>",
             reply_to=reply,
         )
